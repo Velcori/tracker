@@ -193,6 +193,11 @@ async def status(interaction: discord.Interaction, state: app_commands.Choice[st
     except Exception as e:
         await interaction.response.send_message(f"❌ Failed to update channel: `{e}`", ephemeral=True)
 
+@bot.tree.command(name="repeat", description="Echo back your message.")
+@app_commands.describe(message="The message you want the bot to repeat")
+async def repeat(interaction: discord.Interaction, message: str):
+    await interaction.response.send_message(message)
+
 
 # ========== Run Bot ==========
 TOKEN = os.getenv("DISCORD_TOKEN")  # Or hardcode your token for testing
